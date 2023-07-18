@@ -21,7 +21,7 @@ class Registry {
   }
 
   void factory<T>(T Function(RegistryFactory) fn, {@visibleForTesting bool lazy = false}) =>
-      _instances.set<T>(() => fn(<U>() => get<U>()), lazy: lazy);
+      _instances.set<T>(() => fn(get), lazy: lazy);
 
   void lazy<T>(T Function(RegistryFactory) fn) => factory(fn, lazy: true);
 
